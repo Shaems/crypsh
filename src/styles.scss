@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --s-primary: #34428F;
+  --s-secondary: #b3b8d5;
+
+  --s-neutral: #f3f4f6;
+  --s-neutral-300: #EDEEF1;
+  --s-neutral-400: #DDDDE0;
+  --s-neutral-600: #F7F8FB;
+
+  --s-acent-400: #F5580080;
+  --s-acent: #F55800;
+
+  --s-background: #E5E7F1;
+
+  --s-border-card: #D9DBEA;
+  --s-box-shadow: #dee1f5;
+  --s-text: #021373;
+  --s-text-table: #070436;
+  --s-disabled: #02137330;
+
+  --s-white: #ffff;
+  --s-black: #000000;
+
+  --s-error-100: #eed9de;
+  --s-error-600: #BF0C2C;
+  --s-error-900: #4b0713;
+
+  --s-success-100: #d2e5d8;
+  --s-success-600: #008f39;
+  --s-success-900: #0f5029;
+
+  --s-warning-100: #FCF8E3;
+  --s-warning-600: #f4bb4a;
+  --s-warning-900: #8A6D3B;
+}
+
+[data-theme='dark'] {
+  --s-primary: #613d97;
+  --s-background: #000000;
+  --s-text: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.c-card {
+  border-radius: 1rem;
+  box-shadow: 0px 10px 15px -3px var(--s-box-shadow);
+  padding: 1rem;
+}

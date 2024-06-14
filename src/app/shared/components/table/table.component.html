@@ -1,0 +1,16 @@
+<section class="s-table">
+  <table>
+    <thead>
+      <tr>
+        @for (header of headers; track header) {
+        <th>
+          {{header}}
+        </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngTemplateOutlet="bodyTemplate"></ng-container>
+    </tbody>
+  </table>
+</section>

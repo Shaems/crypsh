@@ -13,4 +13,11 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 })
 export class AppComponent {
   title = 'crypsh';
+  navbar = {
+    title: 'Crypsh',
+    navs: [
+      { name: 'Cryptos', link: '/cryptos'},
+      { name: 'Gráficos', link: '/cryptos/chart'},
+    ]
+  }
 }

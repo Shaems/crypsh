@@ -1,0 +1,20 @@
+@if (chartOptions) {
+  <section class="line-chart">
+		@if (!loading) {
+			<div class="line-chart__container">
+				<apx-chart
+					[series]="chartOptions.series"
+					[chart]="chartOptions.chart"
+					[dataLabels]="chartOptions.dataLabels"
+					[fill]="chartOptions.fill"
+					[legend]="chartOptions.legend"
+					[stroke]="chartOptions.stroke"
+					[title]="chartOptions.title"
+					[xaxis]="chartOptions.xaxis"
+					[yaxis]="chartOptions.yaxis"
+					[tooltip]="chartOptions.tooltip">
+				</apx-chart>
+			</div>
+		}
+	</section>
+}
