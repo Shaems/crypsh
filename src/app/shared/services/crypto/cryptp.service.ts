@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, interval, shareReplay, startWith, switchMap } from 'rxjs';
+import { FindCrypto } from '../../models/find-crypto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,17 @@ export class CryptoService {
   //     }
   //   });
   // }
-  getCryptoPrices(): Observable<any> {
+  getCryptoPrices(find: FindCrypto): Observable<any> {
     return interval(this.refreshInterval).pipe(
       startWith(0),
       switchMap(() => this._http.get(`${this.baseUrl}/coins/markets`, {
         params: {
-          vs_currency: 'eur',
-          order: 'market_cap_desc',
-          per_page: 10,
-          page: 1,
+          vs_currency: find.vs_currency,
+          ids: find.ids ?? '',
+          order: find.order ?? '',
+          per_page: find.per_page,
+          page: find.page,
+          precision: 'full',
           sparkline: 'false',
           x_cg_demo_api_key: 'CG-mf16kq5Rz3JE6zAe3mGncNrM'
         }

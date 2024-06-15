@@ -13,11 +13,11 @@ export interface ILineChartConfig {
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
+  colors: string[];
   xaxis: ApexXAxis;
   dataLebels: ApexDataLabels;
   fill: ApexFill;
   stroke: ApexStroke;
-  title: ApexTitleSubtitle;
   yaxis: ApexYAxis;
   tooltip: ApexTooltip;
 }
@@ -70,10 +70,11 @@ export class LineChartComponent implements OnInit, OnChanges {
     this.chartOptions = {
       series: this.config.series,
       chart: {
-        height: 350,
+        height: 520,
         type: "area",
         stacked: false,
       },
+      colors: ['#8e44ad'],
       dataLabels: {
         enabled: false
       },
@@ -92,11 +93,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       },
       stroke: {
         curve: 'smooth',
-        width: 7
-      },
-      title: {
-        text: "Line Chart",
-        align: "left"
+        width: 2
       },
       xaxis: this.config.xaxis,
       yaxis: {

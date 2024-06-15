@@ -3,9 +3,26 @@
     <thead>
       <tr>
         @for (header of headers; track header) {
-        <th>
-          {{header}}
-        </th>
+          @if (header.id) {
+            <th (click)="onHeaderClick(header.id)">
+              <div class="s-table__field">
+                {{ header.title }}
+                @if (field === header.id) {
+                  <span class="s-table__icon">
+                    @if (ordenByType === 'asc') {
+                      <i class="las la-angle-up"></i>
+                    }
+                    @if (ordenByType === 'desc') {
+                      <i class="las la-angle-down"></i>
+                    }
+                  </span>
+                }
+              </div>
+            </th>
+          } 
+          @else {
+            <th class="noHover">{{ header.title }}</th>
+          }
         }
       </tr>
     </thead>

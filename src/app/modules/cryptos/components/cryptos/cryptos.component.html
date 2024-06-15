@@ -1,14 +1,25 @@
 @if (cryptos) {
   <section class="cyptos-list">
-    <s-table [headers]="headers" [bodyTemplate]="body" class="cyptos-list__table">
+    <s-table [headers]="headers" [bodyTemplate]="body" class="cyptos-list__table" (ordenBy)="ordenBy($event)">
       <ng-template #body>
         @for (crypto of cryptos; ; track crypto.name) {
         <tr (click)="goDetail(crypto.id)">
           <td>{{ crypto.market_cap_rank }}</td>
-          <td><img [src]="crypto.image" alt="{{ crypto.name }}" width="30"></td>
-          <td>{{ crypto.name }}</td>
+          <td>
+            <div class="cyptos-list__name">
+              <img [src]="crypto.image" alt="{{ crypto.name }}" width="30">
+              {{ crypto.name }}
+              <span>{{ crypto.symbol | uppercase }}</span>
+            </div>
+          </td>
           <td>€{{ crypto.current_price | number: '1.2-2' }}</td>
           <td [ngClass]="getChangeClass(crypto.price_change_percentage_24h)">
+            @if (crypto.price_change_percentage_24h > 0) {
+              <i class="las la-angle-up cyptos-list__arrow"></i>
+            }
+            @else {
+              <i class="las la-angle-down cyptos-list__arrow"></i>
+            }
             {{ crypto.price_change_percentage_24h | number: '1.2-2' }}%
           </td>
           <td>€{{ crypto.total_volume | number: '1.0-0' }}</td>

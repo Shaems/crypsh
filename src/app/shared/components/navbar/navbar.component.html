@@ -1,15 +1,22 @@
-<div class="container">
-    <div class="header">
-      <div class="corporative">
-        <p>{{navbar.title }}</p>
-      </div>
-      <div class="main_menu">
-        <ul>
-          @for (nav of navbar.navs; track nav.name;) {
-          <li><a [routerLink]="nav.link" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">{{nav.name}}</a></li>
-          }
-        </ul>
-      </div>
+<div class="navbar navbar__container">
+  <div class="navbar__header">
+    <div class="navbar__corporative">
+      <p>{{navbar.title }}</p>
+    </div>
+    <div class="navbar__main_menu">
+      <ul>
+        @for (nav of navbar.navs; track nav.name;) {
+        <li><a [routerLink]="nav.link" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">{{nav.name}}</a></li>
+        }
+      </ul>
+    </div>
+    <div class="navbar__theme" (click)="toggleTheme()">
+        @if (navbar.theme === Theme.LIGHT) {
+          <i class=" las la-moon navbar__theme--icon"></i>
+        } @else {
+        <i class="las la-sun navbar__theme--icon"></i>
+        }
     </div>
   </div>
+</div>

@@ -1,0 +1,31 @@
+.s-tabs {
+    border-radius: 0.5rem;
+    background-color: var(--s-secondary);
+    display: block;
+
+    &__container {
+        align-items: center;
+        display: flex;
+        padding: 0.2rem;
+    }
+
+    &__content {
+        align-items: center;
+        border-radius: 0.5rem;
+        display: flex;
+        background: var(--s-secondary);
+        padding: 0.5rem;
+        height: 1.8rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--s-white);
+        text-align: center;
+        cursor: pointer;
+
+        &.selected {
+            background: var(--s-white);
+            border-radius: 0.5rem;
+            color: var(--s-primary)
+        }
+    }
+}

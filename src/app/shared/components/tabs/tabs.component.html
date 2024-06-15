@@ -1,0 +1,11 @@
+<div class="s-tabs">
+    <div class="s-tabs__container">
+      @for (tab of tabs; track tab;) {
+        <div class="s-tabs__content" [ngClass]="{'selected': tab.selected}" (click)="selectTab(tab)">
+          @if (tab.title) {
+            <span>{{tab.title}}</span>
+          }
+        </div>
+      }
+    </div>
+  </div>

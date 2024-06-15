@@ -1,4 +1,91 @@
+<s-breadcrum [config]="breadcrum"></s-breadcrum>
 <section class="cypto-detail">
-	<h1>{{id | titlecase }}</h1>
-	<s-line-chart [config]="configChart"></s-line-chart>
+	@if (crypto) {
+	<section class="cypto-detail__container">
+		<div class="cypto-detail__title">
+			<img [src]="crypto.image" alt="{{ crypto.name }}" width="30">
+			{{ crypto.name }}
+			<span>{{ crypto.symbol | uppercase }} #{{ crypto.market_cap_rank }}</span>
+		</div>
+		<h2 class="cypto-detail__price">
+			€{{ crypto.current_price | number: '1.2-2' }}
+			<span [ngClass]="getChangeClass(crypto.price_change_percentage_24h)">
+				@if (crypto.price_change_percentage_24h > 0) {
+				<i class="las la-angle-up cyptos-list__arrow"></i>
+				}
+				@else {
+				<i class="las la-angle-down cyptos-list__arrow"></i>
+				}
+				{{ crypto.price_change_percentage_24h | number: '1.2-2' }}% (1 D)
+			</span>
+		</h2>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Capitalización de mercado</p>
+			<p class="cypto-detail__item--price">
+				<span [ngClass]="getChangeClass(crypto.market_cap_change_percentage_24h)">
+					@if (crypto.market_cap_change_percentage_24h > 0) {
+					<i class="las la-angle-up cyptos-list__arrow"></i>
+					}
+					@else {
+					<i class="las la-angle-down cyptos-list__arrow"></i>
+					}
+					{{ crypto.market_cap_change_percentage_24h | number: '1.2-2' }}%
+				</span>
+				€{{ crypto.market_cap | number: '1.0-0' }}
+			</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Volumen total</p>
+			<p class="cypto-detail__item--price">
+				€{{ crypto.total_volume | number: '1.0-0' }}
+			</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Valoración tras la dilución total</p>
+			<p class="cypto-detail__item--price">
+				€{{ crypto.fully_diluted_valuation | number: '1.0-0' }}
+			</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Cantidad circulante</p>
+			<p class="cypto-detail__item--price">{{ crypto.circulating_supply | number: '1.0-0' }}</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Cantidad total</p>
+			<p class="cypto-detail__item--price">{{ crypto.total_supply | number: '1.0-0' }}</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Cantidad máxima</p>
+			<p class="cypto-detail__item--price">{{ crypto.max_supply | number: '1.0-0' }}</p>
+		</div>
+
+		<div class="cypto-detail__subtitle"> Precio histórico de {{ crypto.symbol | uppercase }}</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Rango de 24h</p>
+			<p class="cypto-detail__item--price">€{{ crypto.low_24h | number: '1.2-2' }} - €{{ crypto.high_24h | number:
+				'1.2-2' }}</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Máximo histórico</p>
+			<p class="cypto-detail__item--price">€{{ crypto.ath | number: '1.2-2' }}</p>
+		</div>
+		<div class="cypto-detail__item">
+			<p class="cypto-detail__item--title">Mínimo histórico</p>
+			<p class="cypto-detail__item--price">€{{ crypto.atl | number: '1.2-2' }}</p>
+		</div>
+	</section>
+	}
+	<section class="cypto-detail__chart">
+		<div class="cypto-detail__chart--options">
+			Precio
+			<s-tabs [tabs]="tabsDate" (tabEvent)="tabSelect($event)"></s-tabs>
+		</div>
+		@if (configChart && !isLoading) {
+		<s-line-chart [config]="configChart"></s-line-chart>
+		} @else {
+		<div class="cypto-detail__chart--loading-text">
+			<p>Cargardo datos</p>
+		</div>
+		}
+	</section>
 </section>

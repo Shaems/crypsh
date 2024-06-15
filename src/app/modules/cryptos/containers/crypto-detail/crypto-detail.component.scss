@@ -1,3 +1,93 @@
 .cypto-detail {
-	padding: 2rem;
+	display: flex;
+	gap: 1rem;
+
+	&__container {
+		width: 30%;
+		padding-right: 1rem;
+		border-right: solid 1px var(--s-neutral-400);
+	}
+
+	&__title {
+		align-items: center;
+		display: flex;
+		font-size: 1.5rem;
+		font-weight: bold;
+		margin-bottom: 1rem;
+
+		img {
+			margin-right: 0.5rem;
+		}
+		span {
+			margin-left: 0.5rem;
+			font-size: 0.8rem;
+			color: var(--s-secondary);
+		}
+	}
+
+	&__price {
+		align-items: center;
+		display: flex;
+		font-size: 2rem;
+		font-weight: bold;
+		margin-bottom: 1.5rem;
+		
+		span {
+			margin-left: 0.5rem;
+		}
+	}
+
+	&__item {
+		border-bottom: 1px solid var(--s-neutral-300);
+		display: flex;
+		justify-content: space-between;
+		padding: 1cap 0 1rem;
+
+		&--title {
+			font-size: 0.9rem;
+			color: var(--s-secondary);
+		}
+
+		&--price {
+			align-items: center;
+			display: flex;
+			font-size: 0.9rem;
+			font-weight: bold;
+
+			span {
+				font-size: 0.8rem;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+
+	&__subtitle {
+		font-size: 1rem;
+		font-weight: bold;
+		margin: 1rem 0 1rem;
+	}
+
+	&__chart {
+		position: relative;
+		min-height: 20rem;
+		width: 70%;
+
+		&--options {
+			align-items: center;
+			display: flex;
+			font-size: 1rem;
+			font-weight: bold;
+			justify-content:space-between;
+		}
+
+		&--loading-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 2rem;
+			color: var(--s-text);
+			text-align: center;
+		  }
+	}
 }

@@ -1,6 +1,6 @@
-<div>
-  <h1>Crypto Prices</h1>
+<section class="cryptos-main">
+  <h1 class="cryptos-main__title">Principales Criptomonedas por capitalización de mercado</h1>
   @if (cryptos) {
-    <s-cryptos [cryptos]="cryptos"></s-cryptos>
+    <s-cryptos [cryptos]="cryptos" (ordenByEvent)="ordenBy($event)"></s-cryptos>
   }
-</div>
+</section>

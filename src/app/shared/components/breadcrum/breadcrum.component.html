@@ -1,0 +1,11 @@
+<div class="s-breadcrum">
+	@for (nav of config; track config;) {
+	<div class="s-breadcrum__content">
+		<p class="s-breadcrum__content__text" routerLink="{{nav.link? nav.link : undefined}}"
+			[ngClass]="{'link': $index < config.length - 1}">{{nav.title}}</p>
+		@if ($index < config.length - 1) {
+			<i class="las la-angle-right s-breadcrum__content-arrow"></i>
+		}
+	</div>
+	}
+</div>

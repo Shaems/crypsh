@@ -1,0 +1,29 @@
+.s-breadcrum {
+    align-items: center;
+    display: flex;
+    margin: 1rem 0;
+    width: fit-content;
+  
+    &__content {
+      display: flex;
+      align-items: center;
+      color: var(--s-primary);
+  
+      &__text {
+        font-size: 0.8rem;
+        color: var(--s-primary);
+        text-transform: capitalize;
+      }
+
+      &__text.link:hover {
+        cursor: pointer;
+        color: var(--s-secondary);
+      }
+  
+      &-arrow {
+        margin: 0 0.3rem;
+        color: var(--s-neutral-900);
+        font-size: 0.8rem;
+      }
+    }
+  }

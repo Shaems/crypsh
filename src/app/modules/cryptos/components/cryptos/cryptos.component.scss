@@ -1,17 +1,27 @@
 .cyptos-list {
 	display: flex;
 	justify-content: center;
-	padding: 1rem;
+	padding: 1rem 0 1rem;
 
 	&__table {
 		width: 100%;
 	}
-}
 
-.text-success {
-	color: green;
-}
+	&__name {
+		align-items: center;
+		display: flex;
 
-.text-danger {
-	color: red;
+		img {
+			margin-right: 0.5rem;
+		}
+		span {
+			margin-left: 0.5rem;
+			font-size: 0.8rem;
+			color: var(--s-secondary);
+		}
+	}
+
+	&__arrow {
+		font-size: 0.8rem;
+	}
 }

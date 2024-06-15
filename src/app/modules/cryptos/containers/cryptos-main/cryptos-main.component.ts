@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CryptoService } from '../../../../shared/services/crypto/cryptp.service';
 import { CryptosComponent } from '../../components/cryptos/cryptos.component';
+import { FindCrypto } from '../../../../shared/models/find-crypto.model';
 
 @Component({
   selector: 's-cryptos-main',
@@ -14,12 +15,14 @@ import { CryptosComponent } from '../../components/cryptos/cryptos.component';
 export class CryptosMainComponent {
 
   cryptos: any[] = [];
+  findCrypto = new FindCrypto;
   private subscription!: Subscription;
 
   private _cryptoService =  inject(CryptoService);
 
   ngOnInit(): void {
-    this.cryptoPrices();
+    this._cryptoPrices();
+    console.log(this.findCrypto)
     // this.cryptos = [
     //   { market_cap_rank: 1, name: 'Bitcoin', current_price: 7079100 , market_cap: 1393888887205 },
     //   { market_cap_rank: 2, name: 'Ethereum', current_price: 378033, market_cap: 454138693271 },
@@ -34,8 +37,13 @@ export class CryptosMainComponent {
     // ];
   }
 
-  cryptoPrices(): void {
-    this.subscription = this._cryptoService.getCryptoPrices().subscribe({
+  ordenBy(orderBy: string) {
+    this.findCrypto.order = orderBy;
+    this._cryptoPrices();
+  }
+
+  private _cryptoPrices(): void {
+    this.subscription = this._cryptoService.getCryptoPrices(this.findCrypto).subscribe({
       next: (data) => {
         this.cryptos = data;
       },
