@@ -30,8 +30,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.themeSubscription = this._themeService.activeTheme$.subscribe(theme => {
       this.navbar.theme = theme as Theme;
-      // console.log(theme)
-      // document.documentElement.setAttribute('data-theme', theme);
     });
   }
 
