@@ -23,7 +23,7 @@ export class CryptosComponent {
     { title: 'Precio' },
     { title: 'Cambio 24h' },
     { title: 'Volumen 24h' },
-    { title: 'Cap. Mercado', id: 'market_cap' }
+    { title: 'Capitalización de mercado', id: 'market_cap' }
   ];
 
   private _router = inject(Router);
