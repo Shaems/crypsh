@@ -6,6 +6,9 @@ import { Subscription } from 'rxjs';
 import { FindCrypto } from '../../../../shared/models/find-crypto.model';
 import { ITab, TabsComponent } from '../../../../shared/components/tabs/tabs.component';
 import { BreadcrumComponent, IBreadcrum } from '../../../../shared/components/breadcrum/breadcrum.component';
+import { IRangeResponse } from '../../../../shared/interfaces/range-response.interface';
+import { DateFilter } from '../../enums/date-filter';
+import { ICoin } from '../../../../shared/interfaces/coin.interface';
 
 @Component({
   selector: 's-crypto-detail',
@@ -18,7 +21,7 @@ export class CryptoDetailComponent implements OnInit {
   @Input('id') id!: string;
   configChart!: ILineChartConfig;
   findCrypto = new FindCrypto;
-  crypto!: any;
+  crypto!: ICoin;
   tabsDate!: ITab[];
   isLoading!: boolean;
   breadcrum!: IBreadcrum[];
@@ -50,31 +53,8 @@ export class CryptoDetailComponent implements OnInit {
   getHistory(from: number, to: number) {
     this.isLoading = true;
     this._cryptoService.getCryptoMarketChart(this.id, from, to).subscribe({
-      next: (data) => {
-        const formattedDates = data.prices.map((price: any) => this.convertTimestampToDateString(price[0]));
-        this.configChart = {
-          series: [
-            {
-              name: "Precio",
-              data: data.prices.map((price: any) => price[1])
-            }
-          ],
-          xaxis: {
-            categories: this.processDates(formattedDates),
-            labels: {
-              formatter: function(value: string) {
-                const date = new Date(value);
-                if (!isNaN(date.getTime())) {
-                  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
-                  return new Intl.DateTimeFormat('en-GB', options).format(date);
-                }
-                return '';
-              }
-            },
-            type: 'datatime',
-          }
-        }
-        this.isLoading = false;
+      next: (resp: IRangeResponse) => {
+        this._configChart(resp);
       },
       error: (error) => console.error('Error history', error)
     });
@@ -102,11 +82,38 @@ export class CryptoDetailComponent implements OnInit {
   private _cryptoPrices(): void {
     this.findCrypto.ids = this.id;
     this.subscription = this._cryptoService.getCryptoPrices(this.findCrypto).subscribe({
-      next: (data) => {
-        this.crypto = data[0];
+      next: (coins: ICoin[]) => {
+        this.crypto = coins[0];
       },
       error: (error) => console.error('Error fetching crypto prices', error)
     });
+  }
+
+  private _configChart(resp: IRangeResponse) {
+    const formattedDates = resp.prices.map((price: any) => this.convertTimestampToDateString(price[0]));
+        this.configChart = {
+          series: [
+            {
+              name: "Precio",
+              data: resp.prices.map((price: any) => price[1])
+            }
+          ],
+          xaxis: {
+            categories: this.processDates(formattedDates),
+            labels: {
+              formatter: function(value: string) {
+                const date = new Date(value);
+                if (!isNaN(date.getTime())) {
+                  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
+                  return new Intl.DateTimeFormat('en-GB', options).format(date);
+                }
+                return '';
+              }
+            },
+            type: 'datatime',
+          }
+        }
+        this.isLoading = false;
   }
 
   private _initialConfig() {
@@ -138,10 +145,4 @@ export class CryptoDetailComponent implements OnInit {
     const to = Math.floor(new Date().getTime() / 1000);
     this.getHistory(from, to);
   }
-}
-
-export enum DateFilter {
-  DAY = 'day',
-  WEEK = 'week',
-  MONTH = 'month'
 }

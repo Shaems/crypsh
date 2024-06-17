@@ -4,6 +4,8 @@ import { Observable, interval, shareReplay, startWith, switchMap } from 'rxjs';
 import { FindCrypto } from '../../models/find-crypto.model';
 import { environment } from '../../../../environments/environment';
 import { ROUTES } from '../../constants/routes.constant';
+import { IRangeResponse } from '../../interfaces/range-response.interface';
+import { ICoin } from '../../interfaces/coin.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,10 @@ export class CryptoService {
 
   private _http = inject(HttpClient);
 
-  getCryptoPrices(find: FindCrypto): Observable<any> {
+  getCryptoPrices(find: FindCrypto): Observable<ICoin[]> {
     return interval(this.refreshInterval).pipe(
       startWith(0),
-      switchMap(() => this._http.get(`${environment.api}${ROUTES.MARKETS}`, {
+      switchMap(() => this._http.get<ICoin[]>(`${environment.api}${ROUTES.MARKETS}`, {
         params: {
           vs_currency: find.vs_currency,
           ids: find.ids ?? '',
@@ -33,8 +35,8 @@ export class CryptoService {
     );
   }
 
-  getCryptoMarketChart(id: string, from: number, to: number): Observable<any> {
-    return this._http.get(`${environment.api}${ROUTES.RANGE(id)}`, {
+  getCryptoMarketChart(id: string, from: number, to: number): Observable<IRangeResponse> {
+    return this._http.get<IRangeResponse>(`${environment.api}${ROUTES.RANGE(id)}`, {
       params: {
         vs_currency: 'eur',
         from: from.toString(),
@@ -44,3 +46,4 @@ export class CryptoService {
     });
   }
 }
+
