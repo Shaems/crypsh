@@ -35,6 +35,15 @@ npm install
 ng serve
 ```
 
+## Diseño
+
+<img width="1496" alt="image" src="https://github.com/Shaems/crypsh/assets/53309793/5607ffe7-589a-4d1d-8a80-f969a41f29c1">
+<img width="1496" alt="image" src="https://github.com/Shaems/crypsh/assets/53309793/173e6c9a-9ee0-4620-b0f7-be5a9f050769">
+<img width="1487" alt="image" src="https://github.com/Shaems/crypsh/assets/53309793/6d6f23c5-32f4-469c-afdd-0587a430b4d6">
+
+<img width="1495" alt="image" src="https://github.com/Shaems/crypsh/assets/53309793/753b5581-59a9-43c6-a935-f9bd6537c3e4">
+
+
 ## Posibles mejoras
 - Test unitarios.
 - Mejoras de diseño de UX/UI.
