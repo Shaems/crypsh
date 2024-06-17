@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     title: 'Crypsh',
     navs: [
       { name: 'Cryptos', link: '/cryptos'},
-      { name: 'Gráficos', link: '/cryptos/chart'},
+      { name: 'Bitcoin', link: '/cryptos/detail/bitcoin'},
     ],
     theme: Theme.LIGHT
   };

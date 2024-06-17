@@ -5,5 +5,5 @@ export const routes: Routes = [
     path: 'cryptos',
     loadChildren: () => import('./modules/cryptos/cryptos.routes'),
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'cryptos', pathMatch: 'full' },
 ];
