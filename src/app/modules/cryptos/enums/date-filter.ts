@@ -1,5 +1,5 @@
 export enum DateFilter {
-    DAY = 'day',
-    WEEK = 'week',
-    MONTH = 'month'
+    DAY = 1,
+    WEEK = 7,
+    MONTH = 30
 }

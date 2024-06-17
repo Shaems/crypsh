@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation, inject } fro
 import { ITableHeader, TableComponent } from '../../../../shared/components/table/table.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ICoin } from '../../../../shared/interfaces/coin.interface';
 
 @Component({
   selector: 's-cryptos',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class CryptosComponent {
 
-  @Input() cryptos!: any;
+  @Input() cryptos!: ICoin[];
   @Output() ordenByEvent = new EventEmitter<string>();
 
   headers: ITableHeader[] = [

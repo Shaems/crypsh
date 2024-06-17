@@ -58,7 +58,8 @@ export class LineChartComponent implements OnInit, OnChanges {
   
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config'] && !changes['config'].firstChange) {
-      this.setConfig();
+      this.chartOptions.series = this.config.series;
+      this.chartOptions.xaxis.categories = this.config.xaxis.categories;
     }
   }
 
