@@ -1,27 +1,42 @@
-# Cryps
+# Crypsh App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+Esta es una aplicación de criptomonedas desarrollada en Angular que utiliza datos dinámicos de la API de CoinGecko. Permite visualizar el top 10 de criptomonedas con filtro por 'Capitalización de mercado', detalles de cada una con información adicional y un gráfico interactivo de líneas con filtros por día, semana o mes.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Top 10 de Criptomonedas**: Muestra una tabla con las principales criptomonedas, incluyendo nombre, precio actual, capitalización de mercado y cambios recientes.
+  
+- **Detalles de Criptomoneda**: Permite ver información detallada de cada criptomoneda, como imagen, precio más alto y más bajo histórico, volumen de operaciones, entre otros.
 
-## Code scaffolding
+- **Gráfico de Líneas**: Visualización dinámica de precios históricos mediante un gráfico de líneas interactivo. Permite filtrar datos por día, semana o mes para análisis detallado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Tema Claro y Tema Oscuro**: Personalización de la experiencia del usuario con dos temas visuales: claro y oscuro.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Requerimientos
 
-## Running unit tests
+Necesitaremos previamente instalar lo siguiente:
+- NodeJS 18.14.2
+- NPM ^9
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación y compilación
 
-## Running end-to-end tests
+Para ejecutar localmente el proyecto, sigue estos pasos:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Clonar repositorio
+```bash
+git clone https://github.com/Shaems/crypsh.git
+```
+Instalar
+```bash
+npm install
+```
+```bash
+ng serve
+```
 
-## Further help
+## Posibles mejoras
+- Test unitarios.
+- Mejoras de diseño de UX/UI.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Por Yael De Maio
